@@ -1,0 +1,29 @@
+.generate-test-form {
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.structure-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.structure-item select,
+.structure-item input {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ccc;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.result, .warnings {
+  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-left: 4px solid #ccc;
+}
