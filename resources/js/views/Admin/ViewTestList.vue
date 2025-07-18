@@ -1,4 +1,3 @@
-<!-- views/Admin/ViewTestList.vue -->
 <template>
   <div>
     <h2 class="text-xl font-bold mb-4">📄 Danh sách đề thi</h2>
@@ -10,6 +9,7 @@
       v-if="showModal && selectedTest"
       :test="selectedTest"
       @close="showModal = false"
+
     />
   </div>
 </template>

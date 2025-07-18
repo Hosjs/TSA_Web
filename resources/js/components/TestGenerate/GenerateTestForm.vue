@@ -28,11 +28,12 @@
       </ul>
     </div>
 
-    <div v-if="questions.length" class="result">
+    <div v-if="questions.length" class="result" id="math-container">
       <h4>Danh sách câu hỏi:</h4>
       <ul>
         <li v-for="(q, i) in questions" :key="q.id">
-          {{ i + 1 }}. <span v-html="renderContent(q.content)"></span>
+          {{ i + 1 }}.
+          <span v-html="q.content"></span>
         </li>
       </ul>
     </div>
@@ -40,17 +41,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
+import { renderByMathjax } from 'mathjax-vue3'
 import { useGenerateTest } from '@/store/useGenerateTest.js'
 
 const {
   structure, subjects, types,
   warnings, questions,
-  fetchData, addBlock, submit,
-  renderContent
+  fetchData, addBlock, submit
 } = useGenerateTest()
 
-onMounted(fetchData)
+onMounted(() => {
+  fetchData()
+  // Gọi MathJax sau khi trang tải lần đầu nếu có sẵn câu hỏi
+  setTimeout(() => {
+    const el = document.getElementById('math-container')
+    if (el) renderByMathjax(el)
+  }, 0)
+})
+
+// Gọi lại MathJax mỗi khi danh sách câu hỏi thay đổi
+watch(questions, () => {
+  setTimeout(() => {
+    const el = document.getElementById('math-container')
+    if (el) renderByMathjax(el)
+  }, 0)
+})
 </script>
 
 <style scoped src="@/assets/css/generate-test.css" />

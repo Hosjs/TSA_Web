@@ -40,9 +40,18 @@ const routes = [
     component: StudentLayout,
     meta: { requiresAuth: true, role: 'Student' },
     children: [
-        { path: '', name: 'StudentHome', component: Home }
+        { path: '', name: 'StudentHome', component: Home },
+        { path: 'tests', component: ViewTestList },
     ]
-  },
+  },{
+    path: '/teacher',
+    component: StudentLayout,
+    meta: { requiresAuth: true, role: 'Teacher' },
+    children: [
+        { path: '', name: 'TeacherHome', component: Home },       
+        { path: 'tests', component: ViewTestList },
+    ]
+  }
 ]
 
 const router = createRouter({
@@ -70,5 +79,4 @@ router.beforeEach(async (to, from, next) => {
 
   return next()
 })
-
 export default router
