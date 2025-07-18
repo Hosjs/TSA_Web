@@ -1,6 +1,6 @@
 a website using Laravel,VUE,Mathjax,mysql,....  
-to use this website please paste these command into terminal
-Step 1: "npm install composer".  
+to use this website please paste these command into terminal  
+Step 1: "composer install"  
 Step 2: "copy .env.example .env".  
 Step 3: "php artisan key:generate".  
 Step 4: "Php artisan seeder".  
